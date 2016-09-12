@@ -30,7 +30,7 @@ module.exports = {
 		});
 
 		//Filter by searchText
-		filteredTodos = filteredTodos.filter( (todo) => {
+		var filteredTodos = filteredTodos.filter( (todo) => {
 			return searchText === '' || todo.text.toLowerCase().indexOf(searchText) > -1;
 		});
 
