@@ -7,4 +7,73 @@ FOR FOUNDATION - SASS
 @import "foundation";
 @include foundation-everything;
 
+Components
+@import "components/page-title"
+
 */
+.page-title {
+	margin: 0;
+	padding: 2rem 0;
+	text-align: center;
+}
+
+.container {
+	background: #FAFAFA;
+	border: 1px solid #EEEEEE;
+	border-radius: 5px;
+	padding: 0;
+	margin-bottom: 2rem;
+}
+
+.container__header {
+	border-bottom: 1px solid #EEEEEE;
+	padding: 1rem;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+.container__header:last-child {
+	align-items: center;
+	display: flex;
+}
+
+.container__footer {
+	border-top: 1px solid #EEEEEE;
+	padding: 1rem 1rem 0rem 1rem;
+}
+
+.container__message {
+	color: #AAAAAA;
+	margin: 2rem auto;
+	text-align: center;
+}
+
+.todo {
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	padding: 1rem;
+	transition: background .3s ease;
+}
+
+p {
+	margin: 0;
+}
+
+p:first-child:hover, .todo__subtext:hover {
+	background: #F0F0F0;
+}
+
+.todo__subtext {
+	color: #999999;
+}
+
+.todo-completed p {
+	color: #AAAAAA;
+	text-decoration: line-through;
+}
+
+.todo-completed .todo__subtext {
+	color: #AAAAAA;
+	text-decoration: line-through;
+}
