@@ -58,6 +58,7 @@ Components
 
 p {
 	margin: 0;
+	padding: 0.5rem;
 }
 
 p:first-child:hover, .todo__subtext:hover {
