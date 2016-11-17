@@ -1,9 +1,9 @@
-var React = require('react');
-var Todo = require('Todo');
+import React, { Component } from 'react';
+import Todo from 'Todo';
 
-var TodoList = React.createClass({
-	render: function () {
-		var {todos} = this.props;
+class TodoList extends Component {
+	render() {
+		var { todos } = this.props;
 		var renderTodos = () => {
 			if (todos.length === 0) {
 				return (
@@ -21,8 +21,8 @@ var TodoList = React.createClass({
 			<div>
 				{renderTodos()}
 			</div>
-		)
+		);
 	}
-});
+}
 
-module.exports = TodoList;
+export default TodoList;

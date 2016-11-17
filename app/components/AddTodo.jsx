@@ -1,7 +1,7 @@
-var React = require('react');
+import React, { Component } from 'react';
 
-var AddTodo = React.createClass({
-	handleSubmit: function (e) {
+class AddTodo extends Component {
+	handleSubmit(e) {
 		e.preventDefault();
 		var todoText = this.refs.todoText.value;
 
@@ -11,17 +11,17 @@ var AddTodo = React.createClass({
 		} else {
 			this.refs.todoText.focus();
 		}
-	},
-	render: function () {
+	}
+	render() {
 		return (
 			<div className="container__footer">
-				<form onSubmit={this.handleSubmit}>
+				<form onSubmit={this.handleSubmit.bind(this)}>
 					<input type="text" ref="todoText" placeholder="What do you need to do?"/>
 					<button className="button expanded">Add Todo</button>
 				</form>
 			</div>
 		)
 	}
-});
+}
 
-module.exports = AddTodo;
+export default AddTodo;

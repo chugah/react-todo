@@ -1,27 +1,27 @@
-var React = require('react');
+import React, { Component } from 'react';
 
-var TodoSearch = React.createClass({
-	handleSearch: function () {
+class TodoSearch extends Component {
+	handleSearch() {
 		var showCompleted = this.refs.showCompleted.checked;
 		var searchText = this.refs.searchText.value;
 
 		this.props.onSearch(showCompleted, searchText);
-	},
-	render: function () {
+	}
+	render() {
 		return (
 			<div className="container__header">
 				<div>
-					<input type="search" ref="searchText" placeholder="Search todos" onChange={this.handleSearch}/>
+					<input type="search" ref="searchText" placeholder="Search todos" onChange={this.handleSearch.bind(this)}/>
 				</div>
 				<div>
 					<label>
-						<input type="checkbox" ref="showCompleted" onChange={this.handleSearch}/>
+						<input type="checkbox" ref="showCompleted" onChange={this.handleSearch.bind(this)}/>
 						Show completed todos
 					</label>
 				</div>
 			</div>
-		)
+		);
 	}
-});
+}
 
-module.exports = TodoSearch;
+export default TodoSearch;

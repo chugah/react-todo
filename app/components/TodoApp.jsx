@@ -1,24 +1,25 @@
-var React = require('react');
-var moment = require('moment');
-var TodoList = require('TodoList');
-var AddTodo = require('AddTodo');
-var TodoSearch = require('TodoSearch');
-var uuid = require('node-uuid');
-var TodoAPI = require('TodoAPI');
+import React, { Component } from 'react';
+import moment from 'moment';
+import uuid from 'node-uuid';
+import TodoAPI from 'TodoAPI';
+import AddTodo from 'AddTodo';
+import TodoList from 'TodoList';
+import TodoSearch from 'TodoSearch';
 
 
-var TodoApp = React.createClass({
-	getInitialState: function () {
-		return {
+class TodoApp extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
 			showCompleted: false,
 			searchText: '',
 			todos: TodoAPI.getTodos()
 		};
-	},
-	componentDidUpdate: function () {
+	}
+	componentDidUpdate() {
 		TodoAPI.setTodos(this.state.todos);
-	},
-	handleAddTodo: function (text) {
+	}
+	handleAddTodo(text) {
 		this.setState({
 			todos: [
 				...this.state.todos,
@@ -31,8 +32,8 @@ var TodoApp = React.createClass({
 				}
 			]
 		});
-	},
-	handleToggle: function (id) {
+	}
+	handleToggle(id) {
 		var updatedTodos = this.state.todos.map((todo) => {
 			if (todo.id === id) {
 				todo.completed = !todo.completed;
@@ -41,14 +42,14 @@ var TodoApp = React.createClass({
 			return todo;
 		});
 		this.setState({todos: updatedTodos});
-	},
-	handleSearch: function (showCompleted, searchText) {
+	}
+	handleSearch(showCompleted, searchText) {
 		this.setState({
 			showCompleted: showCompleted,
 			searchText: searchText.toLowerCase()
 		});
-	},
-	render: function () {
+	}
+	render() {
 		var {todos, showCompleted, searchText} = this.state;
 		var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
@@ -58,15 +59,15 @@ var TodoApp = React.createClass({
 				<div className="row">
 					<div className="column small-centered small-11 medium-6 large-5">
 						<div className="container">
-							<TodoSearch onSearch={this.handleSearch} />
-							<TodoList todos={filteredTodos} onToggle={this.handleToggle}/>
-							<AddTodo onAddTodo={this.handleAddTodo} />
+							<TodoSearch onSearch={this.handleSearch.bind(this)} />
+							<TodoList todos={filteredTodos} onToggle={this.handleToggle.bind(this)}/>
+							<AddTodo onAddTodo={this.handleAddTodo.bind(this)} />
 						</div>
 					</div>
 				</div>			
 			</div>
 		)
 	}
-});
+}
 
-module.exports = TodoApp;
+export default TodoApp;
